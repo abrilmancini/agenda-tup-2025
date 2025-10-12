@@ -1,0 +1,44 @@
+<div class="layout">
+  <aside [class.collapsed]="isCollapsed">
+    <button class="menu-btn" (click)="toggleSidebar()">
+      <span class="material-icons">
+        {{ isCollapsed ? 'menu' : 'menu_open' }}
+      </span>
+    </button>
+
+    <nav>
+      <a [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        @if (!isCollapsed) {
+        <span class="label">Usuarios</span>
+        } @else {
+        <p class="material-icons">person</p>
+        }
+      </a>
+
+      <a
+        [routerLink]="['/groups']"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        @if (!isCollapsed) {
+        <span class="label">Grupo</span>
+        } @else {
+        <p class="material-icons">groups</p>
+        }
+      </a>
+
+      <button class="logout" (click)="showLogoutModal()">
+        @if (!isCollapsed) {
+        <span class="label">Cerrar Sesion</span>
+        } @else {
+        <p class="material-icons">logout</p>
+        }
+      </button>
+    </nav>
+  </aside>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+</div>

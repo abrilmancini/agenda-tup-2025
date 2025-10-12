@@ -1,0 +1,93 @@
+.layout {
+  display: flex;
+  height: 100vh;
+  background: #f8f9fa;
+
+  .menu-btn {
+    color: black;
+    background: none;
+  }
+
+  aside {
+    width: 250px;
+    background: #fff;
+    border-right: 1px solid #ddd;
+    transition: width 0.3s;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+
+    &.collapsed {
+      width: 70px;
+
+      nav a span {
+        display: none;
+      }
+    }
+
+    .toggle {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 1rem;
+      text-align: left;
+      font-size: 20px;
+    }
+
+    nav {
+      display: flex;
+      flex-direction: column;
+      margin-top: 1rem;
+      flex: 1;
+
+      a {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 0.75rem 1rem;
+        color: #333;
+        text-decoration: none;
+        border-radius: 8px;
+        margin: 0 0.5rem;
+
+        &:hover {
+          background: #e9f3ff;
+          color: #0066ff;
+        }
+
+        &.active {
+          background: #0066ff;
+          color: #fff;
+        }
+
+        i {
+          font-size: 22px;
+        }
+      }
+    }
+
+    .logout {
+      margin-top: auto;
+      margin-bottom: 1rem;
+      margin-inline: 0.5rem;
+      background-color: red;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      text-align: left;
+      cursor: pointer;
+      transition: background 0.3s;
+
+      &:hover {
+        background-color: #cc0000;
+      }
+    }
+  }
+
+  main {
+    flex: 1;
+    padding: 1.5rem;
+    overflow-y: auto;
+  }
+}
