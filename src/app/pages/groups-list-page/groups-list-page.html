@@ -1,12 +1,42 @@
 <div class="groups-container">
-    <h2>Mis grupos</h2>
+    <div class="header">
+        <h2>Mis grupos</h2>
+        <button class="fab" (click)="mostrarFormulario = !mostrarFormulario">+</button>
+    </div>
     <div *ngIf="cargando">Cargando...</div>
-        <ul *ngIf="!cargando && grupos.length > 0">
-            <li *ngFor="let grupo of grupos" class="group-item">
-                <strong>{{ grupo.nombre }}</strong>
-            </li>
-        </ul>
-        <p *ngIf="!cargando && grupos.length === 0">No tenés grupos todavía.</p>
+<!-- Si no está cargando y hay grupos -->
+    <ul *ngIf="!cargando && grupos.length > 0" class="groups-list">
+        <li *ngFor="let grupo of grupos" class="group-item">
+            <strong>{{ grupo.nombre }}</strong>
+            <!-- <button class="delete-btn" (click)="eliminarGrupo(grupo.id)">
+                <span class="material-symbols-outlined">delete</span>
+            </button> -->
+            <!-- NOTA: solo hiciste el html -->
+        </li>
+    </ul>
+<!-- Si no hay grupos -->
+    <p *ngIf="!cargando && grupos.length === 0">
+        No tenés grupos todavía.
+    </p>
+<!-- Formulario para crear grupo -->
+    <div *ngIf="mostrarFormulario" class="form-container">
+        <form (ngSubmit)="crearGrupo()" #grupoForm="ngForm">
+            <label for="nombre">Nombre del grupo:</label>
+            <input
+                type="text"
+                id="nombre"
+                name="nombre"
+                [(ngModel)]="nuevoGrupo.nombre"
+                required
+            />
+
+            <div class="form-buttons">
+                <button type="submit" [disabled]="grupoForm.invalid">Guardar</button>
+                <button type="button" (click)="cancelar()">Cancelar</button>
+            </div>
+        </form>
+    </div>
 </div>
+
 
 

@@ -1,3 +1,4 @@
+@use "./../../../../public/styles/forms-pages.scss";
 .groups-container {
     padding: 1rem;
     h2 {
@@ -10,4 +11,26 @@
         padding: 0.75rem 1rem;
         border-radius: 8px;
     }
+}
+/* Botón flotante circular */
+.fab {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: none;
+    background-color: #1976d2; /* azul estilo Material */
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    z-index: 1000;
+}
+.fab:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.35);
 }
