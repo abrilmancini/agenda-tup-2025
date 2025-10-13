@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./groups-list-page.scss'],
   imports:[CommonModule]
 })
-export class GroupsListPageComponent implements OnInit {
+export class GroupsListPage implements OnInit {
   grupos: Grupo[] = []; 
   cargando = true;
 
