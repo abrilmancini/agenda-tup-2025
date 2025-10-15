@@ -1,59 +1,23 @@
 @use "./../../../../public/styles/forms-pages.scss";
 
-.container {
-    width: 320px;
-    margin: 20px auto;
-    text-align: left;
-    font-family: Arial, sans-serif;
+.importante{
+    background-color: green;
 }
 
-.search {
+table {
     width: 100%;
-    padding: 6px;
-    margin-bottom: 10px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
+    border-collapse: collapse;
 }
 
-ul {
-    list-style: none;
-    padding: 0;
+td, th {
+    padding: 8px 12px;
+    border-bottom: 1px solid #ddd;
 }
 
-li {
-    background: #f8f8f8;
-    padding: 8px;
-    margin-bottom: 6px;
-    border-radius: 6px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+th {
+    text-align: left;
 }
 
-button {
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-form {
-    margin-top: 15px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-input {
-    padding: 6px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-}
-
-form button {
-    background-color: #007bff;
-    color: white;
-    border-radius: 6px;
-    padding: 8px;
-    cursor: pointer;
+tbody tr:hover {
+    background-color: #f9f9f9;
 }
