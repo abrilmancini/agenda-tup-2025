@@ -8,7 +8,6 @@
     <th>Grupos</th>
     <th>Acciones</th>
   </thead>
-
   <tbody>
     @for (contacto of contactsService.contacts; track $index) {
     <tr>
@@ -23,6 +22,15 @@
       </td>
       <td>
         {{ contacto.email }}
+      </td>
+      <td>
+        <button (click)="editContact(contact)" class="icon-btn">
+          <mat-icon>edit</mat-icon>
+        </button>
+
+        <button (click)="deleteContact(contact)" class="icon-btn delete">
+          <mat-icon>delete</mat-icon>
+        </button>
       </td>
     </tr>
     }
