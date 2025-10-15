@@ -34,23 +34,6 @@ export class ContactListPage implements OnInit {
       console.error('Error al cargar contactos:', error);
     }
   }
-
-  onSearch(event: Event) {
-    const searchTerm = (event.target as HTMLInputElement).value.toLowerCase().trim();
-
-    if (!searchTerm) {
-      this.filteredContacts = [...this.contacts];
-      return;
-    }
-
-    this.filteredContacts = this.contacts.filter(contact => 
-      contact.firstName?.toLowerCase().includes(searchTerm) ||
-      contact.lastName?.toLowerCase().includes(searchTerm) ||
-      contact.number?.toLowerCase().includes(searchTerm) ||
-      contact.email?.toLowerCase().includes(searchTerm)
-    );
-  }
-
   editContact(contacto: any) {
     this.router.navigate(['/contacts', contacto.id, 'edit']);
   }
