@@ -24,13 +24,11 @@
         {{ contacto.email }}
       </td>
       <td>
-        <button (click)="editContact(contact)" class="icon-btn">
-          <mat-icon>edit</mat-icon>
-        </button>
-
-        <button (click)="deleteContact(contact)" class="icon-btn delete">
-          <mat-icon>delete</mat-icon>
-        </button>
+        
+      </td>
+      <td class="acciones">
+          <mat-icon class="edit" (click)="editContact(contacto)">edit</mat-icon>
+          <mat-icon class="delete" (click)="deleteContact(contacto)">delete</mat-icon>
       </td>
     </tr>
     }

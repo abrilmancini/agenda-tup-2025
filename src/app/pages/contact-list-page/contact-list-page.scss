@@ -21,25 +21,3 @@ th {
 tbody tr:hover {
     background-color: #f9f9f9;
 }
-.icon-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 6px;
-    margin-right: 4px;
-    border-radius: 6px;
-    transition: background-color 0.2s;
-
-    mat-icon {
-        vertical-align: middle;
-        font-size: 20px;
-    }
-
-    &:hover {
-        background-color: #f2f2f2;
-    }
-
-    &.delete:hover {
-        background-color: #ffe5e5;
-    }
-}
