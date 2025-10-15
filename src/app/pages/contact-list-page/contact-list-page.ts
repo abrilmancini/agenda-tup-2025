@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-contact-list-page',
-  imports: [RouterModule,ContactListItem, FormsModule],
+  imports: [RouterModule, FormsModule],
   templateUrl: './contact-list-page.html',
   styleUrl: './contact-list-page.scss'
 })
