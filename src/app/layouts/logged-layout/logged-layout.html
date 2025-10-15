@@ -1,6 +1,6 @@
 <div class="layout">
   <aside [class.collapsed]="isCollapsed">
-    <button class="menu-btn" (click)="toggleSidebar()">
+    <button class="button menu-btn" (click)="toggleSidebar()">
       <span class="material-icons">
         {{ isCollapsed ? 'menu' : 'menu_open' }}
       </span>
@@ -27,7 +27,7 @@
         }
       </a>
 
-      <button class="logout" (click)="showLogoutModal()">
+      <button class="button logout" (click)="showLogoutModal()">
         @if (!isCollapsed) {
         <span class="label">Cerrar Sesion</span>
         } @else {

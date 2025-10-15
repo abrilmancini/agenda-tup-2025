@@ -1,5 +1,14 @@
 
 <h1>contactos</h1>
+<div class="search-conteiner">
+  <mat-icon class="search-icon"><search></search></mat-icon>
+  <input
+    type="text"
+    placeholder=" Buscar contacto..."
+    (input)="onSearch($event)"
+    class="search-bar"
+  />
+</div>
 <table>
   <thead>
     <th>Nombre</th>

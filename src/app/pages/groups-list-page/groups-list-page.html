@@ -1,7 +1,7 @@
 <div class="groups-container">
     <div class="header">
         <h2>Mis grupos</h2>
-        <button class="fab" (click)="mostrarFormulario = !mostrarFormulario">+</button>
+        <button class="button fab" (click)="mostrarFormulario = !mostrarFormulario">+</button>
     </div>
     <div *ngIf="cargando">Cargando...</div>
 <!-- Si no está cargando y hay grupos -->
@@ -31,8 +31,8 @@
             />
 
             <div class="form-buttons">
-                <button type="submit" [disabled]="grupoForm.invalid">Guardar</button>
-                <button type="button" (click)="cancelar()">Cancelar</button>
+                <button type="submit" [disabled]="grupoForm.invalid" class="button">Guardar</button>
+                <button type="button" (click)="cancelar()" class="button">Cancelar</button>
             </div>
         </form>
     </div>

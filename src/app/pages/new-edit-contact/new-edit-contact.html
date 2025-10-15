@@ -46,9 +46,9 @@
     <p class="error">Error indeterminado, intente nuevamente.</p>
   } 
   @if(idContacto()){
-    <button [disabled]="newContactForm.invalid || solicitudABackEnCurso">Editar</button>
+    <button [disabled]="newContactForm.invalid || solicitudABackEnCurso" class="button">Editar</button>
   } @else { 
-    <button [disabled]="newContactForm.invalid || solicitudABackEnCurso">Agregar</button>
+    <button [disabled]="newContactForm.invalid || solicitudABackEnCurso" class="button">Agregar</button>
   }
   @if (solicitudABackEnCurso) {
   }

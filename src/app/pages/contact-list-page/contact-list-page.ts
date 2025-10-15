@@ -7,7 +7,6 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import Swal from 'sweetalert2';
 
-
 @Component({
   selector: 'app-contact-list-page',
   imports: [RouterModule, FormsModule, CommonModule, MatIconModule],
@@ -20,6 +19,7 @@ export class ContactListPage implements OnInit {
   contactsService = inject(ContactsService);
   
   contacts: any[] = [];
+  filteredContacts: any[] = [];
 
   async ngOnInit(): Promise<void> {
     await this.cargarContactos();
@@ -27,13 +27,28 @@ export class ContactListPage implements OnInit {
 
   async cargarContactos() {
     try {
-      // Si getContacts() es una Promise, usa await
       await this.contactsService.getContacts();
-      // Asumiendo que el servicio almacena los contactos en una propiedad
       this.contacts = this.contactsService.contacts || [];
+      this.filteredContacts = [...this.contacts]; // Inicializar filteredContacts
     } catch (error) {
       console.error('Error al cargar contactos:', error);
     }
+  }
+
+  onSearch(event: Event) {
+    const searchTerm = (event.target as HTMLInputElement).value.toLowerCase().trim();
+
+    if (!searchTerm) {
+      this.filteredContacts = [...this.contacts];
+      return;
+    }
+
+    this.filteredContacts = this.contacts.filter(contact => 
+      contact.firstName?.toLowerCase().includes(searchTerm) ||
+      contact.lastName?.toLowerCase().includes(searchTerm) ||
+      contact.number?.toLowerCase().includes(searchTerm) ||
+      contact.email?.toLowerCase().includes(searchTerm)
+    );
   }
 
   editContact(contacto: any) {
@@ -55,7 +70,7 @@ export class ContactListPage implements OnInit {
         cancelButton: 'custom-swal-cancel'
       },
       background: 'white',
-      buttonsStyling: false,
+      buttonsStyling: true,
       reverseButtons: true
     });
 
@@ -72,10 +87,9 @@ export class ContactListPage implements OnInit {
             title: 'custom-swal-title',
             confirmButton: 'swal-btn-ok'
           },
-          buttonsStyling: false,
+          buttonsStyling: true,
           background: 'white'
         });
-        // Recargar la lista de contactos después de eliminar
         await this.cargarContactos();
       } catch (error) {
         console.error('Error al eliminar contacto:', error);

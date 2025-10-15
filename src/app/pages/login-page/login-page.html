@@ -15,7 +15,7 @@
       <p class="error">Debe colocar una contraseña de al menos 4 caracteres.</p>
     } 
   </div>
-  <button [disabled]="loginForm.invalid || solicitudABackEnCurso">Iniciar sesión</button>
+  <button [disabled]="loginForm.invalid || solicitudABackEnCurso" class="button">Iniciar sesión</button>
   @if (errorLogin) {
     <p class="error">Datos de sesión incorrectos, intente nuevamente.</p>
   } 
