@@ -1,30 +1,86 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
-
+import { Router, RouterModule } from '@angular/router';
 import { Auth } from '../../services/auth';
 import { ContactsService } from '../../services/contacts-service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
+import Swal from 'sweetalert2';
+
+
 @Component({
   selector: 'app-contact-list-page',
-  imports: [RouterModule, FormsModule,CommonModule,MatIconModule],
+  imports: [RouterModule, FormsModule, CommonModule, MatIconModule],
   templateUrl: './contact-list-page.html',
   styleUrl: './contact-list-page.scss'
 })
 export class ContactListPage implements OnInit {
-contact: any;
-deleteContact(arg0: any) {
-throw new Error('Method not implemented.');
-}
-editContact(arg0: any) {
-throw new Error('Method not implemented.');
-}
-  ngOnInit(): void {
-    this.contactsService.getContacts();
+  router = inject(Router);
+  authService = inject(Auth);
+  contactsService = inject(ContactsService);
+  
+  contacts: any[] = [];
+
+  async ngOnInit(): Promise<void> {
+    await this.cargarContactos();
   }
 
-  authService = inject(Auth)
-  contactsService = inject(ContactsService)
+  async cargarContactos() {
+    try {
+      // Si getContacts() es una Promise, usa await
+      await this.contactsService.getContacts();
+      // Asumiendo que el servicio almacena los contactos en una propiedad
+      this.contacts = this.contactsService.contacts || [];
+    } catch (error) {
+      console.error('Error al cargar contactos:', error);
+    }
+  }
 
+  editContact(contacto: any) {
+    this.router.navigate(['/contacts', contacto.id, 'edit']);
+  }
+
+  async deleteContact(contacto: any) {
+    const result = await Swal.fire({
+      title: '¿Estás seguro?',
+      html: `¿Quieres eliminar a <strong>${contacto.firstName} ${contacto.lastName}</strong>?`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar',
+      customClass: {
+        popup: 'custom-swal-popup',
+        title: 'custom-swal-title',
+        confirmButton: 'custom-swal-confirm',
+        cancelButton: 'custom-swal-cancel'
+      },
+      background: 'white',
+      buttonsStyling: false,
+      reverseButtons: true
+    });
+
+    if (result.isConfirmed) {
+      try {
+        await this.contactsService.deleteContact(contacto.id);
+        Swal.fire({
+          title: '¡Eliminado!',
+          text: `El contacto ${contacto.firstName} ${contacto.lastName} ha sido eliminado.`,
+          icon: 'success',
+          confirmButtonText: 'Ok',
+          customClass: {
+            popup: 'custom-swal-popup',
+            title: 'custom-swal-title',
+            confirmButton: 'swal-btn-ok'
+          },
+          buttonsStyling: false,
+          background: 'white'
+        });
+        // Recargar la lista de contactos después de eliminar
+        await this.cargarContactos();
+      } catch (error) {
+        console.error('Error al eliminar contacto:', error);
+        Swal.fire('Error', 'No se pudo eliminar el contacto', 'error');
+      }
+    }
+  }
 }

@@ -1,7 +1,21 @@
-<p>Contacto Nº {{index() +1}} {{contacto().firstName}}
+c<div class="contact-item">
+    <div class="info">
+        <span class="name">
+            <p>Contacto Nº {{index() +1}} {{contacto().firstName}}
+            @if(contacto().isFavorite){
+                ⭐
+            }
+        </span>
+    </div>
+    <div class="actions">
+        <a [routerLink]="['/contacts',contacto().id,'edit']">Editar</a>
+        <button (click)="showDeleteModal()">Borrar</button>
+    </div>
+</div>
+<!-- <p>Contacto Nº {{index() +1}} {{contacto().firstName}}
     @if(contacto().isFavorite){
         ⭐
     }
     <a [routerLink]="['/contacts',contacto().id,'edit']">Editar</a>
     <button (click)="showDeleteModal()">Borrar</button>
-</p>
+</p> -->

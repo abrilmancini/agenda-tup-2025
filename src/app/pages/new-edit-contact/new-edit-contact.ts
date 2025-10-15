@@ -3,11 +3,11 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { ContactsService } from '../../services/contacts-service';
 import { Router } from '@angular/router';
 import { Contact, NewContact } from '../../interfaces/contacto';
-import { Spinner } from '../../components/spinner/spinner';
+
 
 @Component({
   selector: 'app-new-edit-contact',
-  imports: [FormsModule,Spinner],
+  imports: [FormsModule],
   templateUrl: './new-edit-contact.html',
   styleUrl: './new-edit-contact.scss'
 })
