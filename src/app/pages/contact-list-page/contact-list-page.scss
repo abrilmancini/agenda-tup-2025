@@ -1,5 +1,59 @@
 @use "./../../../../public/styles/forms-pages.scss";
 
-.importante{
-    background-color: green;
+.container {
+    width: 320px;
+    margin: 20px auto;
+    text-align: left;
+    font-family: Arial, sans-serif;
+}
+
+.search {
+    width: 100%;
+    padding: 6px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background: #f8f8f8;
+    padding: 8px;
+    margin-bottom: 6px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+form {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+input {
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+form button {
+    background-color: #007bff;
+    color: white;
+    border-radius: 6px;
+    padding: 8px;
+    cursor: pointer;
 }
