@@ -18,7 +18,7 @@ export class LoggedLayout {
       showDenyButton: false,
       showCancelButton: true,
       showConfirmButton: true,
-      confirmButtonColor: "var(--color-error)",
+      confirmButtonColor: "red",
       cancelButtonText: "Cancelar",
       confirmButtonText: `Cerrar sesión`
     }).then((result) => {
